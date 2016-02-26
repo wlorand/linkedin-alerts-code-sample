@@ -1,0 +1,99 @@
+// @file:    components/_alerts.scss
+// @purpose: reusable alert component styles
+@import "themes/zooey/core";
+
+// copy of li color palette vars from bases/_colors.scss
+$green6: rgb(96, 170, 20);
+$orange6: rgb(236, 100, 12);
+$red6: rgb(221, 46, 31);
+$gray6:  rgb(115, 118, 121);
+
+// =================
+// Alert Colors
+// =================
+$alert-green:   $green6;
+$alert-orange:  $orange6;
+$alert-red:     $red6;
+$alert-gray:    $gray6;
+
+// base alert placeholder for styles common to all alerts
+// includes @mixin typography, used for type styles across the LI Intranet App (not included here)
+%c-alert {
+  @include typography($color: $white, $style: medium, $size: xxx-small, $plain-text: false);
+  height: 48px;
+  margin: 1px 0;
+  padding: 10px;
+
+  // custom links for alerts - no link states (note: not the greatest UX, but this is the spec)
+  a, a:link, a:hover, a:active, a:visited {
+    color: inherit;
+    margin-left: 4px;
+    text-decoration: underline;
+  }
+}
+
+// @param: $severity: error | yield | success | notice
+@mixin make-alert($severity) {
+  @extend %c-alert;
+
+  @if $severity == error {
+    background-color: $alert-red;
+
+  }
+  @else if $severity == yield {
+    background-color: $alert-orange;
+  }
+  @else if $severity == success {
+    background-color: $alert-green;
+  }
+  @else if $severity == notice {
+    background-color: $alert-gray;
+  }
+}
+
+// alertsWidget specific implementation styles
+#alertsWidget {
+
+   .js-alertView {
+    list-style-type: none;
+  }
+
+  // alert helper classes
+  .c-alert__box--0 {
+    @include make-alert(notice);
+  }
+
+  .c-alert__box--1 {
+    @include make-alert(success);
+  }
+
+  .c-alert__box--2 {
+    @include make-alert(yield);
+  }
+
+  .c-alert__box--3 {
+    @include make-alert(error);
+  }
+
+  // temp class pre-close icon
+  .c-alert__dismiss {
+    @include clearfix();
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    margin: 5px 20px 0 0;
+  }
+
+  .c-alert__text {
+    vertical-align: middle;
+  }
+
+
+  .c-alert__icon {
+    @include size(24px);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+}
