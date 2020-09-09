@@ -1,0 +1,20 @@
+{
+  "name": "linkedin-alerts-code-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "li-alerts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wlorand/linkedin-alerts-code-sample.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wlorand/linkedin-alerts-code-sample/issues"
+  },
+  "homepage": "https://github.com/wlorand/linkedin-alerts-code-sample#readme"
+}
